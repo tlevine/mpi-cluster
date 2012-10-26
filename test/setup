@@ -3,5 +3,3 @@
 sudo useradd mpi-cluster-test
 sudo mkdir /home/mpi-cluster-test
 sudo chown mpi-cluster-test: /home/mpi-cluster-test
-mpi-cluster add username@host1.domain 2
-

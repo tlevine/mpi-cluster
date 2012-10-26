@@ -1,0 +1,13 @@
+#!/bin/sh
+set -e
+
+# Add the worker
+mpi-cluster add 'mpi-cluster-test@localhost' 1
+
+# Check that the ssh keys are passed.
+tmp=/tmp/mpi-cluster-test-authorized_keys
+sudo su -c 'cat $HOME/.ssh/authorized_keys' 'mpi-cluster-test' > "$tmp"
+for key in id_rsa.pub id_dsa.pub; do
+  grep "$HOME/$key" "$tmp"
+done
+
