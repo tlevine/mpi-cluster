@@ -2,7 +2,7 @@
 set -e
 
 # Add the worker
-mpi-cluster add 'mpi-cluster-test@localhost' 1
+../mpi-cluster add 'mpi-cluster-test@localhost' 1
 
 # Check that the ssh keys are passed.
 tmp=/tmp/mpi-cluster-test-authorized_keys

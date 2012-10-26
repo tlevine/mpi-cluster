@@ -2,10 +2,10 @@
 set -e
 
 # Add the worker
-mpi-cluster add 'mpi-cluster-test@localhost' 2
+../mpi-cluster add 'mpi-cluster-test@localhost' 2
 
 # Check that it's in there.
 grep 'mpi-cluster-test@localhost slots=2' ~/.mpi_hostfile
 
 # Add the worker. This should fail and warn about the worker already being there.
-! mpi-cluster add 'mpi-cluster-test@localhost' 1 2>&1 | grep already
+! ../mpi-cluster add 'mpi-cluster-test@localhost' 1 2>&1 | grep already
