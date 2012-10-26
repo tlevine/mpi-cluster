@@ -1,4 +1,4 @@
 #!/bin/sh
 
-sudo userdel -r mpi-cluster-test
+sudo userdel -r 'mpi-cluster-test'
 
