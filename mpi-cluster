@@ -8,8 +8,13 @@ if [ "$1" = 'add' ]; then
 elif [ "$1" = 'build' ]; then
   address="$2"
   ssh "$address" '
-  cat /etc/debian_version | grep wheezy/sid &&
+  if cat /etc/debian_version | grep wheezy/sid ; then
     apt-get update && apt-get -y install openmpi-bin openmpi-common libopenmpi1.3 libopenmpi-dev
+  elif [ -e /etc/pacman.conf ] ; then
+    sudo pacman -Sy openmpi
+  fi
+  Rscript -e install.packages\(\"rmpi\"\)
+  Rscript -e "install.packages(\"doMPI\", dependencies = TRUE)"
   '
 else
   echo "USAGE: $0 [build, add, rm] [options...]"

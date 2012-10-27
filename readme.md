@@ -15,3 +15,21 @@ Then configure slaves; run this on the master.
     
     # Add four slaves on username@host1.domain
     mpi-cluster add username@host2.domain 4
+
+## Running R
+(Directions come from [here](http://support.rstudio.org/help/discussions/questions/618-using-rstudio-server-with-rmpi-and-an-mpi-cluster).)
+
+Run something like this to open an interactive R session with access to the
+cluster.
+
+    mpirun --hostfile .mpi_hostfile -np 1 R --no-save --interactive
+
+Then, from the session,
+
+    library(Rmpi)
+    cl <- mpi.spawn.Rslaves(nslaves=1)                  
+
+And register it with `foreach` (from [here](http://cran.r-project.org/web/packages/doMPI/vignettes/doMPI.pdf))
+
+    library(doMPI)
+    registerDoMPI(cl)
