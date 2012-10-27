@@ -33,3 +33,7 @@ And register it with `foreach` (from [here](http://cran.r-project.org/web/packag
 
     library(doMPI)
     registerDoMPI(cl)
+
+
+I changed my mind. Snowfall looks way easier.
+http://cran.r-project.org/web/packages/snowfall/vignettes/snowfall.pdf
