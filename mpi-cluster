@@ -5,4 +5,12 @@ if [ "$1" = 'add' ]; then
   slots="$3"
   ssh-copy-id "$address"
   echo "$address slots=$slots" > "$HOME/.mpi_hostfile"
+elif [ "$1" = 'build' ]; then
+  address="$2"
+  ssh "$address" '
+  cat /etc/debian_version | grep wheezy/sid &&
+    apt-get update && apt-get -y install openmpi-bin openmpi-common libopenmpi1.3 libopenmpi-dev
+  '
+else
+  echo "USAGE: $0 [build, add, rm] [options...]"
 fi
